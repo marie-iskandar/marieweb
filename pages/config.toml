@@ -1,0 +1,10 @@
+template = "template.dokkan"
+use = "Main"
+
+ignore = ["tags"]
+
+[dokkan]
+version = "0.0.0"
+
+[includes]
+lib = "lib.dokkan"

@@ -1,0 +1,33 @@
+@dokkan 0.0.0
+@import lib::"lib.dokkan"
+
+@def Main($category: string, $title: string) = html[lang="en"] {
+  lib::StdHead() {
+    title { "hi, i'm marie" $" - {$title}" @if ($title) }
+    link[rel="stylesheet" type="text/css" href="/style.css"]
+  }
+  body#top.top-level {
+    header.main-header[role="banner"] > h1 > "Hi, I'm Marie"
+    nav#main-nav.main-nav[aria-label="Primary"] > ul.main-menu-list {
+      @def Item($itemCategory: string) = li.button {
+        .active @if($itemCategory == $category)
+        a[href=$"/{$itemCategory}.html"] > @yield
+      }
+      Item("index") > "Main"
+      Item("projects") > "Projects"
+      Item("travels") > "Travels"
+      Item("dreams") > "Dreams"
+      Item("links") > "Links"
+    }
+    main.with-bg {
+      h2 @if($title) > $title
+      @yield
+    }
+    aside.socials {
+      @def Social($aria-label: string, $href: string) = a.has-icon[$aria-label $href rel="me"]
+      Social("Bluesky", "https://bsky.app/profile/marieiskandar.me").bluesky
+      Social("itch.io", "https://marieiskandar.itch.io/").itch
+    }
+    footer.copyright > &"Copyright &copy; 2026 Marie Iskandar Cartwright"
+  }
+}

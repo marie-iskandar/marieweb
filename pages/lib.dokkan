@@ -1,0 +1,10 @@
+@dokkan 0.0.0
+@def InfoStat($th, $td) = tr {
+	th > $th
+	td > $td
+}
+@def StdHead() = head {
+	meta[charset="utf-8"]
+	meta[name="viewport" content="width=device-width, initial-scale=1"]
+	@yield
+}

@@ -1,0 +1,35 @@
+@dokkan 0.0.0
+@import main::"template.dokkan"
+
+@def DreamSummary($title: string, $date: string, $href: string) = article.card {
+  h3 {
+    a[$href] @if($href) { $title }
+    $title @unless($href)
+  }
+  time[datetime=$date] { $date }
+  @yield
+}
+
+@def LongDream($path: string) = li {
+  @def InnerDream($title: string, $date: string, $slug: string) =
+    DreamSummary($title, $date, $"{$path}.html") > p > $slug
+  InnerDream(@pageargs($"{$path}.md"))
+}
+
+@def ShortDream($path: string) = li {
+  @def InnerDream($title: string, $date: string) =
+    DreamSummary($title, $date, "") > @contents($"{$path}.md")
+  InnerDream(@pageargs($"{$path}.md"))
+}
+
+@def Dreams() = main::Main("dreams", "Dreams") {
+  @yield
+
+  h3 { "2026" }
+  ul.dreams {
+    LongDream("dreams/20260619")
+    LongDream("dreams/20260525")
+    ShortDream("dreams/20260426")
+    LongDream("dreams/20260315")
+  }
+}

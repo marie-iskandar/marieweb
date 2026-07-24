@@ -1,0 +1,31 @@
+@dokkan 0.0.0
+@import main::"template.dokkan"
+
+@def LinkBtn($btn: string, $href: string, $title) = li {
+  a[$href rel="external noreferrer"] {
+    img.link-button[src=$btn]
+  }
+}
+
+@def LinkTxt($href: string, $title) = li {
+  a[$href rel="external noreferrer"].text-button {
+    $title
+  }
+}
+
+@def Links($cat: string) = section {
+  h3 > $cat
+  ul.links.shuffled > @yield
+}
+
+@def LinksPage() = main::Main("links", "Links") {  
+  Links("Friends") {
+    LinkBtn("assets/kya-button.gif", "http://kya.garden", "kya.garden")
+    LinkTxt("https://www.surrealschematics.com/", "Surreal Schematics")
+    LinkTxt("https://rebeccawrites.carrd.co/", "Rebecca Gardner")
+  }
+
+  @yield
+  
+  script[type="module" src="/travels.js" async]
+}

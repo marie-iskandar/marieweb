@@ -1,0 +1,425 @@
+:root {
+    --theme-1: #2e5c3a;
+    --theme-2: #4b7c5a;
+    --theme-3: #6c9d70;
+    --theme-4: #8ebe8e;
+    --theme-5: #b7e1b7;
+
+    --primary-1: #333;
+    --secondary-1: #666;
+    --weak-1: #ccc;
+    
+    --background-1: #fafafa;
+    --background-2: #ffffff;
+
+    --button-background-color: var(--theme-3);
+    --inactive-button-background-color: var(--theme-4);
+    --inactive-button-border-color: var(--theme-3);
+    --inactive-button-border: 0.1rem solid var(--inactive-button-border-color);
+    --button-border-color: var(--theme-1);
+    --button-border: 0.1rem solid var(--button-border-color);
+    --button-border-radius: 0.5rem;
+    --button-hover-background-color: var(--theme-5);
+    --page-background-color: var(--theme-2);
+    --body-background: var(--background-1);
+    --card-background: var(--background-2);
+    --card-border: 0.1rem solid var(--weak-1);
+    --body-text-color: var(--primary-1);
+    --deemphasis-text-color: var(--secondary-1);
+    --button-text-color: black;
+    --visited-button-text-color: var(--primary-1);
+    --top-level-border-color: var(--primary-1);
+    --top-level-border: 0.1rem solid var(--top-level-border-color);
+    --icon-size: 2rem;
+    --dialog-width: 600px;
+}
+
+body {
+    /* BG pattern adapted from: https://css-pattern.com/ */
+    --s: 112px; /* control the size*/
+    --c1: var(--theme-1);
+    --c2: var(--theme-2);
+
+    --_g: conic-gradient(var(--c1) 25%, #0000 0) 0 0;
+    background: var(--_g)/calc(2 * var(--s)) calc(var(--s) / 9.5),
+    var(--_g)/calc(var(--s) / 9.5) calc(2 * var(--s)),
+    repeating-conic-gradient(#0000 0 25%, var(--c1) 0 50%) var(--s) 0 /calc(2 * var(--s)) calc(2 * var(--s)),
+    radial-gradient(50% 50%, var(--c2) 98%, var(--c1)) 0 0/var(--s) var(--s);
+
+    color: var(--body-text-color);
+    font: normal 1rem tahoma, helvetica, sans-serif;
+    padding: 1rem;
+    margin: 0;
+    line-height: 1.5rem;
+    letter-spacing: 0.015rem;
+}
+
+.main-header {
+    background: linear-gradient(to bottom, rgb(from var(--theme-5) r g b / 70%) 0%, var(--theme-5) 100%);
+    border-radius: 1rem 1rem 0 0;
+    border: var(--top-level-border);
+    border-bottom: 0;
+
+    h1 {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.top-level > .main-nav {
+    background-color: var(--theme-5);
+    border-left: var(--top-level-border);
+    border-right: var(--top-level-border);
+    padding-top: 0;
+}
+
+h1, h2, h3 {
+    margin-top: 1rem;
+}
+
+li>h4 {
+    margin-bottom: 0.25rem;
+}
+
+.top-level {
+    position: relative;
+    max-width: 720px;
+    padding: 1rem 0 0;
+    margin: auto;
+}
+
+.top-level > * {
+    box-sizing: border-box;
+    padding: 0.5rem 1rem;
+}
+
+.with-bg {
+    padding: 0 1rem 0.25rem;
+    background: var(--body-background);
+}
+
+@media (max-width: 600px) {
+    :root {
+        --dialog-width: 320px;
+    }
+
+    .body {
+        padding: 0;
+        margin: 0;
+    }
+
+    .with-bg {
+        border-top: var(--top-level-border);
+        border-bottom: var(--top-level-border);
+    }
+}
+
+@media (min-width: 600px) {
+    .with-bg {
+        border: var(--top-level-border);
+    }
+
+    p {
+        text-indent: 1.5rem;
+    }
+}
+
+@media(hover: hover) {
+    .button:hover {
+        box-shadow: var(--theme-2) 0 0 0.5rem 0;
+    }
+}
+
+.button {
+    border-radius: var(--button-border-radius);
+    border: var(--inactive-button-border);
+    background: linear-gradient(180deg, var(--theme-5) 0%, var(--theme-4) 30%, var(--theme-4) 90%, var(--theme-3) 100%);
+
+    &.active {
+        background: linear-gradient(180deg, var(--theme-2) 0%, var(--theme-3) 10%, var(--theme-3) 90%, var(--theme-4) 100%);
+        border: var(--button-border);
+    }
+
+    a {
+        display: block;
+        min-width: 6rem;
+        padding: 0.4rem;
+        text-align: center;
+        text-decoration: none;
+        color: var(--button-text-color);
+
+        &.visited {
+            color: var(--visited-button-text-color);
+        }
+    }
+}
+
+.main-menu-list {
+    margin: 0;
+    padding: 0;
+
+    li {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+@media (min-width: 500px) {
+    .main-menu-list {
+        display: flex;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+        height: 2.5rem;
+
+        li {
+            display: block;
+        }
+    }
+}
+
+.info-page {
+    .me {
+        display: block;
+        margin: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-header {
+        padding-left: 0.5rem;
+    }
+
+    .main-nav {
+        padding-left: 0.5rem;
+    }
+}
+
+@media (min-width: 600px) {
+    .info-page {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+
+        .me {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .table {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .info-body {
+            grid-row: 2;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-area: 2 / 1 / span 1 / span 2;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .main-menu-list li {
+        display: inline;
+    }
+
+    .main-menu-list li.button {
+        filter: none;
+        border: none;
+        background: none;
+    }
+
+    .main-menu-list li.button a {
+        display: inline;
+        padding: 0.25rem;
+    }
+
+    .main-menu-list li.button.active a {
+        font-weight: bold;
+    }
+
+    .main-menu-list li + li::before {
+        content: "・";
+    }
+
+    .main-menu-list li a {
+        display: inline;
+        filter: none;
+        border: none;
+        background: none;
+    }
+
+    ul.dreams li article.card {
+        display: block;
+        p {
+            margin-top: 0.5rem;
+        }
+    }
+}
+
+#top .has-icon {
+    padding-left: var(--icon-size);
+    height: var(--icon-size);
+    display: inline-block;
+    background-position: left;
+    background-size: var(--icon-size) var(--icon-size);
+    background-repeat: no-repeat;
+    margin-left: 0.5rem;
+
+    &:hover {
+        filter: drop-shadow(0 0 0.5rem var(--theme-2));
+    }
+}
+
+#top .has-icon.bluesky {
+    background-image: url(assets/bluesky.svg);
+}
+
+#top .has-icon.itch {
+    background-image: url(assets/itchio.svg);
+}
+
+.copyright {
+    text-align: center;
+    background-color: var(--theme-5);
+    border-radius: 0 0 0.75rem 0.75rem;
+    border: var(--top-level-border);
+    border-top: 0;
+}
+
+.info-page table th {
+    text-align: right;
+    font-weight: normal;
+    color: var(--deemphasis-text-color);
+    padding-right: 1rem;
+}
+
+.fade {
+    mask-image: linear-gradient(180deg, #000 10%, transparent);
+}
+
+.socials {
+    position: absolute;
+    top: 2rem;
+    right: 0.5rem;
+}
+
+@media print {
+    body {
+        font: 1rem "Georgia", serif;
+    }
+
+    .socials {
+        display: none;
+    }
+
+    .with-bg, .main-header, .copyright {
+        border: 0;
+    }
+
+    .top-level > .main-nav {
+        display: none;
+    }
+
+    p {
+        text-indent: 0;
+    }
+}
+
+ul.dreams, ul.links, ul.travels {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.links, ul.travels {
+    display: flex;
+    &>li {
+        flex: 1;
+    }
+    flex-wrap: wrap;
+}
+
+ul.travels li {
+    align-self: center;
+}
+
+.link-button {
+    width: 176px;
+    height: 62px;
+}
+
+.text-button {
+    min-width: 176px;
+    height: 62px;
+    display: inline-block;
+    border: 1px solid var(--deemphasis-text-color);
+    border-radius: 0.25rem;
+    line-height: 62px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.card {
+    background-color: var(--card-background);
+    border: var(--card-border);
+    border-radius: 0.75rem;
+    padding: 0 1rem;
+    margin: 1rem;
+}
+
+.card p {
+    text-indent: 0;
+}
+
+ul.dreams article.card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 1rem;
+    gap: 1rem;
+    h3 {
+        grid-column: 1;
+        margin: 0;
+    }
+    time {
+        grid-column: 2;
+        color: var(--deemphasis-text-color);
+    }
+    p {
+        grid-column: 1 / span 2;
+        margin: 0;
+    }
+}
+
+body:has(dialog[open]) {
+    overflow: hidden;
+}
+
+::backdrop {
+    background-color: rgba(0 0 0 / 50%);
+    backdrop-filter: blur(0.5rem);
+}
+
+.lightbox {
+    max-width: var(--dialog-width);
+    max-height: 768px;
+}
+
+.lightbox img {
+    max-width: 768px;
+    max-height: 768px;
+    object-fit: contain;
+}
+
+.lightbox .close {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: hotpink;
+    color: white;
+    content: '-';
+}
