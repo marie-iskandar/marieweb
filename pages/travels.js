@@ -3,7 +3,7 @@ const openModal = (e) => {
         return;
     }
     e.preventDefault();
-    const modalId = e.currentTarget.getAttribute("data-opens-modal");
+    const modalId = e.currentTarget.getAttribute("commandfor");
     document.getElementById(modalId).showModal();
 }
 
@@ -23,7 +23,7 @@ const shuffled = (src) => {
     return arr;
 };
 
-for (const opener of document.querySelectorAll("[data-opens-modal]")) {
+for (const opener of document.querySelectorAll("[commandfor]")) {
     opener.addEventListener('click', openModal);
 }
 
