@@ -1,5 +1,5 @@
 @dokkan 0.0.0
-@import main::"../template.dokkan"
+@import main::"template.dokkan"
 
 @def TravelList($base: string) = ul.travels {
   @def Travel($id: string) = li {
@@ -13,13 +13,13 @@
       img[src=$"{$base}/i{$id}.jpeg"]
     }
   }
-  Travel($i|%5d) @for($i : 0 .. 115)
+  Travel($i | %5d) @for($i : 0 .. 115)
 }
 
-@def Korea() = main::Main("travels", "South Korea") {
+@def TravelsPage($title: string, $path: string) = main::Main("travels", $title) {
   @yield
 
-  TravelList("korea")
+  TravelList($path)
 
   script[type="module" src="/travels.js" async]
 }
