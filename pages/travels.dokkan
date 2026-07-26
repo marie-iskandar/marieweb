@@ -1,7 +1,7 @@
 @dokkan 0.0.0
 @import main::"template.dokkan"
 
-@def TravelList($base: string) = ul.travels {
+@def TravelList($base: string, $count: int) = ul.travels {
   @def Travel($id: string) = li {
     a[role="button" command="show-modal" commandfor=$"lb{$id}" href=$"{$base}/i{$id}.jpeg"] {
       img.thumb[src=$"{$base}/t{$id}.jpeg" width=128]
@@ -13,13 +13,13 @@
       img[src=$"{$base}/i{$id}.jpeg"]
     }
   }
-  Travel($i | %5d) @for($i : 0 .. 115)
+  Travel($i | %5d) @for($i : 0 .. $count)
 }
 
-@def TravelsPage($title: string, $path: string) = main::Main("travels", $title) {
+@def TravelsPage($title: string, $path: string, $count: int) = main::Main("travels", $title) {
   @yield
 
-  TravelList($path)
+  TravelList($path, $count)
 
   script[type="module" src="/travels.js" async]
 }
