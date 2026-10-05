@@ -23,6 +23,7 @@
     LinkBtn("assets/kya-button.gif", "http://kya.garden", "kya.garden")
     LinkTxt("https://www.surrealschematics.com/", "Surreal Schematics")
     LinkTxt("https://rebeccawrites.carrd.co/", "Rebecca Gardner")
+    LinkTxt("https://celiawinter.com/", "Irresponsible Storytelling")
   }
 
   @yield
