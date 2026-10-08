@@ -27,6 +27,8 @@
 
   h3 { "2026" }
   ul.dreams {
+    LongDream("dreams/20261007")
+    LongDream("dreams/20260829")
     LongDream("dreams/20260619")
     LongDream("dreams/20260525")
     ShortDream("dreams/20260426")
